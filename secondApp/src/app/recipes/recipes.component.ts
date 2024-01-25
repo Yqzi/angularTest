@@ -1,13 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recipe } from './recipe.model';
-import { RecipeService } from './recipes.service';
 import { Ingredient } from '../shared/ingredient.model';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css',
-  providers: [RecipeService]
 })
 export class RecipesComponent implements OnInit {
   recipes2: Recipe[] = [
@@ -22,15 +20,9 @@ export class RecipesComponent implements OnInit {
 
     ]),
   ];
-  selectedRecipe: Recipe;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.recipeService.recipeSelected.subscribe(
-      (recipe: Recipe) => {
-        this.selectedRecipe = recipe;
-      }
-    );
   }
 }
